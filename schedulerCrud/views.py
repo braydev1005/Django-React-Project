@@ -1,8 +1,8 @@
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
-from schedulerCrud.serializers import ScheduleEventsSerializer
-from schedulerCrud.models import ScheduleEvents
+from schedulerCrud.serializers import ScheduleEventsSerializer, AuthUserSerializer
+from schedulerCrud.models import ScheduleEvents, AuthUser
 
 # views.py
 @csrf_exempt
@@ -46,3 +46,8 @@ def UpdateData(request):
     else:
         return JsonResponse({"error": "Invalid method"}, status=405)
     
+@csrf_exempt
+def GetUser(request):
+    auth_users = AuthUser.objects.all()
+    auth_users_serializer = AuthUserSerializer(auth_users, many=True)
+    return JsonResponse(auth_users_serializer.data, safe=False)

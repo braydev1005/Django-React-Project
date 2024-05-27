@@ -7,4 +7,5 @@ urlpatterns = [
     path('Home/GetData', views.GetData),
     path('Home/UpdateData/', views.UpdateData),
     path('admin/', admin.site.urls),
+    path('Home/GetUser', views.GetUser),
 ]
