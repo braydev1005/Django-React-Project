@@ -22,6 +22,7 @@ class ScheduleEvents(models.Model):
     class Meta:
         db_table = 'schedule_events'
 
+
 class AuthUser(models.Model):
     Id = models.IntegerField(primary_key=True)
     password = models.CharField(max_length=200, null=True, blank=True)
